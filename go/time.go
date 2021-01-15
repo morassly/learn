@@ -27,4 +27,6 @@ func main() {
 	s := t.Format("20060102")
 	fmt.Println(t, "=>", s)
 	// 2020-12-11 07:11:07.249322 +0000 UTC => 20201211
+	timeAfter := <-time.After(time.Second)
+	fmt.Println(timeAfter)
 }
