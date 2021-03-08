@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+	"unicode/utf8"
 )
 
 func main() {
@@ -21,4 +22,5 @@ func main() {
 	strReader.Read(newStr)
 	fmt.Printf("%s\n", newStr)
 	fmt.Printf("%s %s \n", strconv.Itoa(12), strconv.FormatFloat(2.0, 'f', 1, 64))
+	fmt.Println(utf8.RuneCountInString("你好"))
 }
