@@ -1,8 +1,6 @@
-package main
+package leetcode
 
-import "fmt"
-
-func solve(s string) string {
+func longestPalindrome(s string) string {
 	if len(s) < 2 {
 		return s
 	}
@@ -30,7 +28,6 @@ func solve(s string) string {
 		if dp[i] > maxlen {
 			maxlen = dp[i]
 			left = (i - dp[i]) >> 1
-            fmt.Println(maxlen,left)
 		}
 	}
 	return s[left : left+maxlen]
@@ -40,8 +37,4 @@ func min(x, y int) int {
 		return x
 	}
 	return y
-}
-func main() {
-	s := "cbbd"
-	fmt.Println(solve(s))
 }
