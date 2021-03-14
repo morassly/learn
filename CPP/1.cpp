@@ -1,136 +1,44 @@
-/* ***********************************************
-Author        :kuangbin
-Created Time  :2014-2-1 0:46:43
-File Name     :E:\2014ACM\SGU\SGU101.cpp
-************************************************ */
-
-#include <stdio.h>
-#include <string.h>
 #include <iostream>
-#include <algorithm>
 #include <vector>
-#include <queue>
-#include <set>
-#include <map>
-#include <string>
-#include <math.h>
-#include <stdlib.h>
-#include <time.h>
 using namespace std;
+double findMedianSortedArrays(vector<int> &nums1, vector<int> &nums2)
+{
+    int m = nums1.size(), n = nums2.size();
+    vector<int> s1(nums1), s2(nums2);
+    if (m > n)
+    {
+        swap(m, n);
+        swap(s1, s2);
+    }
 
-struct Edge
-{
-    int to,next;
-    int index;
-    int dir;
-    bool flag;
-}edge[220];
-int head[30],tot;
-void init()
-{
-    memset(head,-1,sizeof(head));
-    tot = 0;
-}
-void addedge(int u,int v,int index)
-{
-    edge[tot].to = v;
-    edge[tot].next = head[u];
-    edge[tot].index = index;
-    edge[tot].dir = 0;
-    edge[tot].flag = false;
-    head[u] = tot++;
-    edge[tot].to = u;
-    edge[tot].next = head[v];
-    edge[tot].index = index;
-    edge[tot].dir = 1;
-    edge[tot].flag = false;
-    head[v] = tot++;
-}
-int du[30];
-int F[30];
-int find(int x)
-{
-    if(F[x] == -1)return x;
-    else return F[x] = find(F[x]);
-}
-void bing(int u,int v)
-{
-    int t1 = find(u);
-    int t2 = find(v);
-    if(t1 != t2)
-        F[t1] = t2;
-}
-vector<int>ans;
-void dfs(int u)
-{
-    for(int i = head[u]; i != -1;i = edge[i].next)
-        if(!edge[i].flag )
+    int left = 0, right = m + 1, tol = m + n + 1, i = 0, j = 0, ans1 = 0, ans2 = 0;
+    while (left < right)
+    {
+        i = left + (right - left)/2;
+        j = tol/2 - i;
+
+        int min1 = i == 0 ? INT_MIN : s1[i - 1];
+        int max1 = i == m ? INT_MAX : s1[i];
+        int min2 = j == 0 ? INT_MIN : s2[j - 1];
+        int max2 = j == n ? INT_MAX : s2[j];
+
+        if (min1 < max2)
         {
-            edge[i].flag = true;
-            edge[i^1].flag = true;
-            dfs(edge[i].to);
-            ans.push_back(i);
+            left = i + 1;
+            ans1 = max(min1, min2);
+            ans2 = min(max1, max2);
         }
+        else
+            right = i;
+    }
+    if ((m + n) & 1)
+        return ans1;
+    return (ans1 + ans2) / 2.0;
+    
 }
-
 int main()
 {
-    freopen("in.txt","r",stdin);
-    freopen("out.txt","w",stdout);
-    int n;
-    while(scanf("%d",&n) == 1)
-    {
-        init();
-        int u,v;
-        memset(du,0,sizeof(du));
-        memset(F,-1,sizeof(F));
-        for(int i = 1;i <= n;i++)
-        {
-            scanf("%d%d",&u,&v);
-            addedge(u,v,i);
-            du[u]++;
-            du[v]++;
-            bing(u,v);
-        }
-        int s = -1;
-        int cnt = 0;
-        for(int i = 0;i <= 6;i++)
-        {
-            if(du[i]&1) cnt++;
-            if(du[i] > 0 && s == -1)
-                s = i;
-        }
-        bool ff = true;
-        if(cnt != 0 && cnt != 2)
-        {
-            printf("No solution\n");
-            continue;
-        }
-        for(int i = 0; i <= 6;i++)
-            if(du[i] > 0 && find(i) != find(s))
-                ff = false;
-        if(!ff)
-        {
-            printf("No solution\n");
-            continue;
-        }
-        ans.clear();
-        if(cnt == 0)dfs(s);
-        else
-        {
-            for(int i = 0;i <= 6;i++)
-                if(du[i] & 1)
-                {
-                    dfs(i);
-                    break;
-                }
-        }
-        for(int i = 0;i < ans.size();i++)
-        {
-            printf("%d ",edge[ans[i]].index);
-            if(edge[ans[i]].dir == 0)printf("-\n");
-            else printf("+\n");
-        }
-    }
+    vector<int> a = {1, 3}, b = {2};
+    printf("%f", findMedianSortedArrays(a, b));
     return 0;
 }
