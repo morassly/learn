@@ -40,5 +40,7 @@ int main()
 {
     vector<int> a = {1, 3}, b = {2};
     printf("%f", findMedianSortedArrays(a, b));
+    int txt;
+    cin >> txt;
     return 0;
 }
