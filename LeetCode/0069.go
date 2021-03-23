@@ -1,3 +1,5 @@
+package leetcode
+
 func mySqrt(x int) int {
 	if x < 0 {
 		return -1
