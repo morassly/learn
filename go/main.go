@@ -1,25 +1,29 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"net/http"
+	"strings"
+	"log"
+)
 
-type student struct {
-	name string
-	age  int
+func sayhelloName(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()  //解析参数，默认是不会解析的
+	fmt.Println(r.Form)  //这些信息是输出到服务器端的打印信息
+	fmt.Println("path", r.URL.Path)
+	fmt.Println("scheme", r.URL.Scheme)
+	fmt.Println(r.Form["url_long"])
+	for k, v := range r.Form {
+		fmt.Println("key:", k)
+		fmt.Println("val:", strings.Join(v, ""))
+	}
+	fmt.Fprintf(w, "Hello astaxie!") //这个写入到w的是输出到客户端的
 }
 
 func main() {
-	m := make(map[string]*student)
-	stus := []student{
-		{name: "小王子", age: 18},
-		{name: "娜扎", age: 23},
-		{name: "大王八", age: 9000},
-	}
-    
-	for i, stu := range stus {
-		m[stu.name] = &stus[i]
-        fmt.Println(m[stu.name])
-	}
-	for k, v := range m {
-		fmt.Println(k, "=>", v.name)
+	http.HandleFunc("/", sayhelloName) //设置访问的路由
+	err := http.ListenAndServe(":9099", nil) //设置监听的端口
+	if err != nil {
+		log.Fatal("ListenAndServe: ", err)
 	}
 }

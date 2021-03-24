@@ -2,6 +2,6 @@
 #C++
 *.txt
 *.out
-
+CPP/1.out.dSYM
 #vscode
 .vscode
