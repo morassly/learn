@@ -1,10 +1,10 @@
 
 # 二分总结 #
 - [二分总结](#二分总结)
-  - [写法](#写法)
-    - [C++实现](#c实现)
-    - [Go实现](#go实现)
-  - [leetcode题号](#leetcode题号)
+	- [写法](#写法)
+		- [C++实现](#c实现)
+		- [Go实现](#go实现)
+	- [leetcode题号](#leetcode题号)
 ## 写法 ##
 ### C++实现 ###
 ```c++
@@ -79,3 +79,7 @@ func binary(a []int, key int) int {
 ```
 
 ## leetcode题号 ##
+
+1. 0004 [CPP](../leetcode/0004.cpp) [GO](../leetcode/0004.go)
+2. 0033 [CPP](../leetcode/0033.cpp) [GO](../leetcode/0033.go)
+3. 0034 [CPP](../leetcode/0034.cpp) [GO](../leetcode/0034.go)
