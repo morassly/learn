@@ -1,15 +1,11 @@
-package leetcode
-
 func search(nums []int, target int) int {
 	l, r := 0, len(nums)-1
 
-	for l <= r {
+	for l < r {
 		mid := l + (r-l)/2
-		if nums[mid] == target {
-			return mid
-		} else if nums[mid] >= nums[l] {
-			if target >= nums[l] && target < nums[mid] {
-				r = mid - 1
+		if nums[mid] >= nums[l] {
+			if target >= nums[l] && target <= nums[mid] {
+				r = mid
 			} else {
 				l = mid + 1
 			}
@@ -17,9 +13,12 @@ func search(nums []int, target int) int {
 			if target > nums[mid] && target <= nums[r] {
 				l = mid + 1
 			} else {
-				r = mid - 1
+				r = mid
 			}
 		}
+	}
+	if nums[l] == target {
+		return l
 	}
 	return -1
 }
