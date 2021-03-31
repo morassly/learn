@@ -53,7 +53,7 @@ int binaray_search(int &a[],int key, int l, int r) {
 ```golang
 //a 升序，相当于lower_bound(a,a+n)
 //搜索区间 [0,n)
-//sort.Search(len(a),func(i int){return a[i] >= key})
+//sort.Search(len(a),func(i int) bool{return a[i] >= key})
 func binary(a []int, key int) int {
 	l, r := 0, len(a)
 
@@ -68,14 +68,14 @@ func binary(a []int, key int) int {
 	return l
 }
 //a 升序，相当于upper_bound(a,a+n)
-//sort.Search(len(a),func(i int){return a[i] > key})
+//sort.Search(len(a),func(i int) bool{return a[i] > key})
 
 //a[]降序，相当于lower_bound(a,a+n,greater<int>())
-//sort.Search(len(a),func(i int){return a[i] <= key})
+//sort.Search(len(a),func(i int) bool{return a[i] <= key})
 
 
 //相当于upper_bound(a,a+n,greater<int>())
-//sort.Search(len(a),func(i int){return a[i] < key})
+//sort.Search(len(a),func(i int) bool{return a[i] < key})
 ```
 
 ## leetcode题号 ##
@@ -84,3 +84,4 @@ func binary(a []int, key int) int {
 2. 0033 [CPP](../leetcode/0033.cpp) [GO](../leetcode/0033.go)
 3. 0034 [CPP](../leetcode/0034.cpp) [GO](../leetcode/0034.go)
 4. 0035 [CPP](../leetcode/0035.cpp) [GO](../leetcode/0035.go)
+5. 0074 [CPP](../leetcode/0074.cpp) [GO](../leetcode/0074.go)
