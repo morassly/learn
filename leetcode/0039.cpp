@@ -35,7 +35,7 @@ public:
                 ans.emplace_back(tmp);
                 return ;
             }
-            for (auto j = i;j<n&&target >= candidates[i];j++) {
+            for (auto j = i;j<n&&target >= candidates[j];j++) {
                 tmp.emplace_back(candidates[j]);
                 dfs(dfs,target-candidates[j],j);
                 tmp.pop_back();
