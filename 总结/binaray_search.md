@@ -86,3 +86,5 @@ func binary(a []int, key int) int {
 4. 0035 [CPP](../leetcode/0035.cpp) [GO](../leetcode/0035.go)
 5. 0074 [CPP](../leetcode/0074.cpp) [GO](../leetcode/0074.go)
 6. 0081 [CPP](../leetcode/0081.cpp) [GO](../leetcode/0081.go)
+7. 0153 [CPP](../leetcode/0153.cpp) [GO](../leetcode/0153.go)
+8. 0154 [CPP](../leetcode/0154.cpp) [GO](../leetcode/0154.go)
