@@ -11,6 +11,7 @@
     - [2.实现细节](#2实现细节)
     - [3.模版](#3模版-1)
   - [最长回文子串](#最长回文子串)
+    - [dp模版](#dp模版)
     - [3.manacher 模版](#3manacher-模版)
   - [最长递增子序列](#最长递增子序列)
 ## 最长公共子序列LCS ##
@@ -137,6 +138,7 @@ func longestPalindromeSubseq(s string) int {
 
 ```
 ## 最长回文子串 ##
+### dp模版 ###
 ### 3.manacher 模版 ###
 ```go
 package leetcode
