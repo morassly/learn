@@ -6,8 +6,8 @@ public:
             return n;
         }
         int l = 2;
-        for (auto r = 2; r < n; r++){
-            if (nums[r] != nums[l-2]) {
+        for (auto r = 2; r < n; r++) {
+            if (nums[r] != nums[l - 2]) {
                 nums[l] = nums[r];
                 l++;
             }

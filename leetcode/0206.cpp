@@ -6,17 +6,13 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
-class Solution1
-{
+class Solution1 {
 public:
-    ListNode *reverseList(ListNode *head)
-    {
-        if (head == nullptr)
-            return head;
+    ListNode *reverseList(ListNode *head) {
+        if (head == nullptr) return head;
         ListNode *pre = NULL;
         ListNode *curr = head;
-        while (curr != nullptr)
-        {
+        while (curr != nullptr) {
             ListNode *temp = curr->next;
             curr->next = pre;
             pre = curr;
@@ -34,18 +30,14 @@ public:
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
-class Solution
-{
+class Solution {
 public:
-    ListNode *reverseList(ListNode *head)
-    {
-        if (head == nullptr)
-            return head;
+    ListNode *reverseList(ListNode *head) {
+        if (head == nullptr) return head;
         ListNode *pre = new ListNode(-1);
         pre->next = head;
         ListNode *curr = head;
-        while (curr->next != nullptr)
-        {
+        while (curr->next != nullptr) {
             ListNode *next = curr->next;
             curr->next = next->next;
             next->next = pre->next;

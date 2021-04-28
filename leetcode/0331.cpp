@@ -10,7 +10,7 @@ public:
             }
             if (preorder[i] == ',') {
                 i++;
-            } else if (preorder[i] == '#'){
+            } else if (preorder[i] == '#') {
                 slots--;
                 i++;
             } else {
@@ -18,7 +18,7 @@ public:
                 while (i < n && preorder[i] != ',') {
                     i++;
                 }
-                slots++; // slots = slots - 1 + 2
+                slots++;  // slots = slots - 1 + 2
             }
         }
         return slots == 0;

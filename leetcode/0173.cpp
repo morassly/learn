@@ -6,11 +6,11 @@
  *     TreeNode *right;
  *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
  *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left),
+ * right(right) {}
  * };
  */
-class BSTIterator
-{
+class BSTIterator {
 private:
     TreeNode *cur;
     stack<TreeNode *> stk;
@@ -18,10 +18,8 @@ private:
 public:
     BSTIterator(TreeNode *root) : cur(root) {}
 
-    int next()
-    {
-        while (cur != nullptr)
-        {
+    int next() {
+        while (cur != nullptr) {
             stk.push(cur);
             cur = cur->left;
         }
@@ -32,10 +30,7 @@ public:
         return ret;
     }
 
-    bool hasNext()
-    {
-        return cur != nullptr || !stk.empty();
-    }
+    bool hasNext() { return cur != nullptr || !stk.empty(); }
 };
 
 /**

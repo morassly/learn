@@ -1,8 +1,6 @@
 class Solution {
 public:
-    int getID(int x, long w) {
-        return x < 0 ? (x + 1ll) / w - 1 : x / w;
-    }
+    int getID(int x, long w) { return x < 0 ? (x + 1ll) / w - 1 : x / w; }
 
     bool containsNearbyAlmostDuplicate(vector<int>& nums, int k, int t) {
         unordered_map<int, int> mp;

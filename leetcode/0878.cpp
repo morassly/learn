@@ -5,7 +5,7 @@ public:
         int L = A / gcd(A, B) * B;
 
         long lo = 0;
-        long hi = (long) 1e15;
+        long hi = (long)1e15;
         while (lo < hi) {
             long mi = lo + (hi - lo) / 2;
             // If there are not enough magic numbers below mi...
@@ -15,7 +15,7 @@ public:
                 hi = mi;
         }
 
-        return (int) (lo % MOD);
+        return (int)(lo % MOD);
     }
 
     int gcd(int x, int y) {

@@ -1,26 +1,17 @@
-class Solution
-{
+class Solution {
 public:
-    int longestValidParentheses(string s)
-    {
+    int longestValidParentheses(string s) {
         int ans = 0;
         stack<int> ss;
         ss.emplace(-1);
-        for (int i = 0; i < s.size(); i++)
-        {
-            if (s[i] == '(')
-            {
+        for (int i = 0; i < s.size(); i++) {
+            if (s[i] == '(') {
                 ss.emplace(i);
-            }
-            else
-            {
+            } else {
                 ss.pop();
-                if (ss.empty())
-                {
+                if (ss.empty()) {
                     ss.emplace(i);
-                }
-                else
-                {
+                } else {
                     ans = max(ans, i - ss.top());
                 }
             }

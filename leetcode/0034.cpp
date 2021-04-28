@@ -1,36 +1,25 @@
-class Solution
-{
+class Solution {
 public:
-    vector<int> searchRange(vector<int> &nums, int target)
-    {
+    vector<int> searchRange(vector<int> &nums, int target) {
         int low = binary(nums, target, false);
         int up = binary(nums, target, true);
-        if (low == up)
-        {
+        if (low == up) {
             return vector<int>{-1, -1};
         }
         return vector<int>{low, up - 1};
     }
 
-    int binary(vector<int> &a, int x, bool flag)
-    {
+    int binary(vector<int> &a, int x, bool flag) {
         int l = 0, r = a.size();
-        while (l < r)
-        {
+        while (l < r) {
             int mid = l + (r - l) / 2;
-            if (a[mid] <= x)
-            {
-                if (!flag && a[mid] == x)
-                {
+            if (a[mid] <= x) {
+                if (!flag && a[mid] == x) {
                     r = mid;
-                }
-                else
-                {
+                } else {
                     l = mid + 1;
                 }
-            }
-            else
-            {
+            } else {
                 r = mid;
             }
         }

@@ -1,11 +1,8 @@
-class Solution
-{
+class Solution {
 public:
-    int hammingWeight(uint32_t n)
-    {
+    int hammingWeight(uint32_t n) {
         int ans = 0;
-        while (n)
-        {
+        while (n) {
             n &= (n - 1);
             ans++;
         }

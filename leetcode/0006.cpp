@@ -1,11 +1,10 @@
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <string>
 
 using namespace std;
 class Solution {
 public:
     string convert(string s, int numRows) {
-
         if (numRows == 1) return s;
 
         string ret;

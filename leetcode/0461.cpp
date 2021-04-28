@@ -1,11 +1,8 @@
-class Solution
-{
+class Solution {
 public:
-    int hammingDistance(int x, int y)
-    {
+    int hammingDistance(int x, int y) {
         int temp = x ^ y, ans = 0;
-        while (temp)
-        {
+        while (temp) {
             ans++;
             temp &= (temp - 1);
         }

@@ -8,16 +8,13 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-class Solution
-{
+class Solution {
 public:
-    ListNode *swapPairs(ListNode *head)
-    {
+    ListNode *swapPairs(ListNode *head) {
         ListNode *dummynode = new ListNode(0, head);
         ListNode *pre = dummynode;
 
-        while (head != nullptr && head->next != nullptr)
-        {
+        while (head != nullptr && head->next != nullptr) {
             ListNode *next = head->next;
             head->next = next->next;
             next->next = pre->next;

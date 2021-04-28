@@ -1,9 +1,7 @@
-class Solution
-{
+class Solution {
 public:
     int num[256];
-    int romanToInt(string s)
-    {
+    int romanToInt(string s) {
         num['I'] = 1;
         num['V'] = 5;
         num['X'] = 10;

@@ -8,20 +8,16 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-class Solution
-{
+class Solution {
 public:
-    ListNode *reverseBetween(ListNode *head, int left, int right)
-    {
+    ListNode *reverseBetween(ListNode *head, int left, int right) {
         ListNode *dummynode = new ListNode(-1);
         dummynode->next = head;
         ListNode *pre = dummynode;
-        for (int i = 0; i < left - 1; i++)
-            pre = pre->next;
+        for (int i = 0; i < left - 1; i++) pre = pre->next;
 
         ListNode *cur = pre->next;
-        for (int i = 0; i < right - left; i++)
-        {
+        for (int i = 0; i < right - left; i++) {
             ListNode *next = cur->next;
             cur->next = next->next;
             next->next = pre->next;

@@ -8,30 +8,24 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-class Solution
-{
+class Solution {
 public:
-    ListNode *rotateRight(ListNode *head, int k)
-    {
-        if (head == nullptr || head->next == nullptr)
-        {
+    ListNode *rotateRight(ListNode *head, int k) {
+        if (head == nullptr || head->next == nullptr) {
             return head;
         }
         int n = 1;
         ListNode *cur = head;
-        while (cur->next != nullptr)
-        {
+        while (cur->next != nullptr) {
             n++;
             cur = cur->next;
         }
         int pre = n - k % n;
-        if (pre == n)
-        {
+        if (pre == n) {
             return head;
         }
         cur->next = head;
-        while (pre--)
-        {
+        while (pre--) {
             cur = cur->next;
         }
         ListNode *ans = cur->next;
