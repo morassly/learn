@@ -8,8 +8,7 @@ public:
             if (i == 0 || nums[i] != nums[i - 1]) {
                 int l = i + 1, r = nums.size() - 1;
                 while (l < r) {
-                    if (abs(nums[i] + nums[l] + nums[r] - target) <
-                        abs(ans - target))
+                    if (abs(nums[i] + nums[l] + nums[r] - target) < abs(ans - target))
                         ans = nums[i] + nums[l] + nums[r];
                     if (nums[i] + nums[l] + nums[r] < target)
                         l++;

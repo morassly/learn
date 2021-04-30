@@ -13,8 +13,7 @@ public:
         for (int i = 0; i < wlen; i++) {
             smap.clear();
             int count = 0;
-            for (int l = i, r = i; l <= slen - wlen * wnum && r <= slen - wlen;
-                 r += wlen) {
+            for (int l = i, r = i; l <= slen - wlen * wnum && r <= slen - wlen; r += wlen) {
                 string temp = s.substr(r, wlen);
                 if (wmap[temp]) {
                     smap[temp]++;

@@ -16,8 +16,7 @@ public:
                 mux2 = 1 << 9 + (board[i][j] - '1');
                 mux3 = 1 << 18 + (board[i][j] - '1');
                 box_index = (i / 3) * 3 + j / 3;
-                if ((wow[i] & mux1) != mux1 && (wow[j] & mux2) != mux2 &&
-                    (wow[box_index] & mux3) != mux3) {
+                if ((wow[i] & mux1) != mux1 && (wow[j] & mux2) != mux2 && (wow[box_index] & mux3) != mux3) {
                     wow[i] = wow[i] | mux1;
                     wow[j] = wow[j] | mux2;
                     wow[box_index] = wow[box_index] | mux3;
