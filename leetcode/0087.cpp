@@ -9,8 +9,7 @@ public:
                 chars[s1[i + k] - 'a']++;
                 chars[s2[j + k] - 'a']--;
             }
-            return !any_of(chars, chars + 26,
-                           [](const auto& entry) { return entry != 0; });
+            return !any_of(chars, chars + 26, [](const auto& entry) { return entry != 0; });
         };
         auto dfs = [&](auto&& dfs, int i, int j, int length) -> bool {
             if (dp[i][j][length]) return dp[i][j][length] == 1;
