@@ -1,47 +1,33 @@
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
-class Solution {
-public:
-    int strStr(string haystack, string needle) {
-        if(needle.size()==0)
-            return 0;
-
-        int next[needle.size()];
-        next[0] = -1;
-        int i=0, j=-1;
-        while(i<needle.size()-1){
-            if(j==-1 || needle[i]==needle[j]){
-                next[++i] = ++j;
-                if(needle[i] == needle[j])
-                    next[i] = next[j];
-            }else{
-                j = next[j];
-            }
+int findKthLargest(vector<int>& nums, int k) {
+    int n = nums.size();
+    for (auto l = 0, r = n - 1; l < r;) {
+        auto i = l, j = r + 1;
+        for (;;) {
+            for (++i; i < r && nums[i] < nums[l]; i++)
+                ;
+            for (--j; j > l && nums[j] > nums[l]; j--)
+                ;
+            if (i >= j)
+                break;
+            swap(nums[i], nums[j]);
         }
-
-        i = 0, j = 0;
-        // int m = haystack.size(),n = needle.size();
-        while(i < haystack.size() && j < needle.size()) {
-
-            if(j ==  -1 || haystack[i] == needle[j]){
-                ++i;
-                ++j;
-            }else{
-                j = next[j];
-            }
-        }
-
-        if(j == needle.size())
-            return i-j;
+        swap(nums[j], nums[l]);
+        if (j == (n - k))
+            break;
+        else if (j > (n - k))
+            r = j - 1;
         else
-            return -1;
+            l = j + 1;
     }
-};
+    return nums[n - k];
+}
 
-int main(){
-    Solution s;
-    string a ="hello",t="ll";
-   cout<<s.strStr(a,t)<<endl;
+int main() {
+    vector nums{3, 2, 1, 5, 6, 4};
+    cout << findKthLargest(nums,2 ) << endl;
     return 0;
 }
