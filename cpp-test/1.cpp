@@ -2,19 +2,21 @@
 #include <set>
 #include <string>
 #include <vector>
+#include <algorithm>
+#include <numeric>
 using namespace std;
-class A {
-public:
-    void getBiggestThree() {
-        int dp[1024 * 1024 * 4 * 8];
-        dp[0] = 0;
-        return;
+int lastStoneWeightII(vector<int>& stones) {
+    int sum = accumulate(stones.begin(),stones.end(),0);
+    int t = sum/2;
+    int dp[t+1];
+    memset(dp,0,sizeof dp);
+    for(auto stone : stones){
+        for(int i = t; i >= stone; --i){
+            dp[i] = max(dp[i],dp[i-stone]+stone);
+        }
     }
-};
-
-int
-main() {
-    A* a = new A();
-    a->getBiggestThree();
+    return dp[t];
+}
+int main() {
     return 0;
 }
