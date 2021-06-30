@@ -7,6 +7,7 @@ public:
         int n = nums.size();
         for (int mask = 0; mask < (1 << n); ++mask) {
             t.clear();
+            
             for (int i = 0; i < n; ++i) {
                 if (mask & (1 << i)) {
                     t.push_back(nums[i]);
